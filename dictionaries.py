@@ -27,7 +27,6 @@ setdefault()        Returns the value of the specified key. If the key does not 
 update()	        Updates the dictionary with the specified key-value pairs
 values()	        Returns a list of all the values in the dictionary
 """
-
 #Dictionary
 #A dictionary is a collection which is unordered, changeable, and indexed.
 thisdict = {
@@ -37,7 +36,16 @@ thisdict = {
 }
 print(thisdict)                              #{'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor'}
 
+#fromkeys()
+#Returns a dictionary with the specified keys and the specified value.
+k = ('key1', 'key2', 'key3')
+v = 0
+
+anotherdict = dict.fromkeys(k, v)
+print(anotherdict)
+
 #Accessing Items
+
 #You can access the items of a dictionary by referring to its key name, inside square brackets.
 thisdict = {
     "brand": "Ford",
@@ -48,7 +56,19 @@ thisdict = {
 x = thisdict["model"]
 print(x)                                    #F-150
 
+#get()
+#Returns the value of the items with the specified key
+thisdict = {
+    "brand": "Ford",
+    "model": "F-150",
+    "trim": "Raptor"
+}
+
+x = thisdict.get("model")
+print(x)                                    #F-150
+
 #Change Values
+
 #You can change the value of a specific item by referring to its key name.
 thisdict = {
     "brand": "Ford",
@@ -74,13 +94,13 @@ for x in thisdict:
                                             #model
                                             #trim
 
+#You can also use the keys() method to return keys of a dictionary
 thisdict = {
     "brand": "Ford",
     "model": "F-150",
     "trim": "Raptor"
 }
 
-#You can also use the keys() method to return keys of a dictionary
 for x in thisdict.keys():
     print(x)                                #brand
                                             #model
@@ -133,6 +153,27 @@ thisdict = {
 if "model" in thisdict:
     print("Yes, 'model' is one of the keys in thisdict dictionary.")
 
+#Return Value of Specified Key or Create New Key 
+# setdefault()
+# Returns the value of the item with the specified key.
+thisdict = {
+    "brand": "Ford",
+    "model": "F-150",
+    "trim": "Raptor"
+}
+
+x = thisdict.setdefault("trim", "STX")
+print(x)                                    #Raptor
+
+# If the key does not exist, insert the key, with the specified value.
+thisdict = {
+    "brand": "Ford",
+    "model": "F-150",
+}
+
+x = thisdict.setdefault("trim", "STX")
+print(x)                                    #STX
+
 #Dicionary Length
 #To determine how many items (key-value pairs) a dictionary has, use the len() function.
 thisdict = {
@@ -144,6 +185,7 @@ thisdict = {
 print(len(thisdict))                        #3
 
 #Add items
+
 thisdict = {
     "brand": "Ford",
     "model": "F-150",
@@ -151,6 +193,17 @@ thisdict = {
 }
 
 thisdict["color"] = "charcoal"
+print(thisdict)                             #{'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor', 'color': 'charcoal'}
+
+#update()
+#Inserts the specified items to the dicionary.  The specified items can be dictionary or an iterable object.
+thisdict = {
+    "brand": "Ford",
+    "model": "F-150",
+    "trim": "Raptor"
+}
+
+thisdict.update({"color": "charcoal"})
 print(thisdict)                             #{'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor', 'color': 'charcoal'}
 
 #Remove Items
@@ -209,114 +262,88 @@ thisdict = {
 thisdict.clear()
 print(thisdict)                            #{}
 
-"""
-#Copy a set
-#You cannot copy a set simply by typing set2 = set1, because: set2 will only be a reference to set1, and changes made in set1 will automatically also be made in set2.
+#Copy a Dictionary
+#You cannot copy a set simply by typing dict2 = dict1, because: dict2 will only be a reference to dict1, and changes made in dict1 will automatically also be made in dict2.
 
 #copy()
-thisset = {"apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"}
-newset = thisset.copy()
-print(newset)                             #{'apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange'}
+thisdict = {
+    "brand": "Ford",
+    "model": "F-150",
+    "trim": "Raptor"
+}
 
-#Joining Two Sets
+newdict = thisdict.copy()
+print(newdict)                              #{'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor'}
 
-#union()
-#Returns a new set containing all items from both sets
-#Will EXCLUDE duplicate items.
-thisset = {"apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"}
-thatset = {"papaya", "strawberry", "zuchini"}
+#dict()
+thisdict = {
+    "brand": "Ford",
+    "model": "F-150",
+    "trim": "Raptor"
+}
 
-myset = thisset.union(thatset)              
-print(myset)                                #{'kiwi', 'orange', 'strawberry', 'papaya', 'mango', 'zuchini', 'cherry', 'nectarine', 'banana', 'apple'}
+newdict = dict(thisdict)
+print(newdict)                              #{'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor'}
 
-#update
-#Inserts the items from one set into another
-#Will EXCLUDE duplicate items.
-thisset = {"apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"}
-thatset = {"papaya", "strawberry", "zuchini"}
+#Nested Dictionaries
 
-thisset.update(thatset)              
-print(thisset)                              #{'kiwi', 'orange', 'strawberry', 'papaya', 'mango', 'zuchini', 'cherry', 'nectarine', 'banana', 'apple'}
+#A dictionary can also contain many dictionaries.
+trucks = {
+    "truck1" : {
+    "brand": "Ford",
+    "model": "F-150",
+    "trim": "Raptor"
+    },
+    "truck2" : {
+    "brand": "Toyota",
+    "model": "Tundra",
+    "trim": "TRD Pro"
+    },
+    "truck3" : {
+    "brand": "Chevrolet",
+    "model": "Silverado",
+    "trim": "High Country"
+    }
+}
 
-#Comparing Two Sets
+print(trucks)                               #{
+                                            # 'truck1': {'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor'}, 
+                                            # 'truck2': {'brand': 'Toyota', 'model': 'Tundra', 'trim': 'TRD Pro'}, 
+                                            # 'truck3': {'brand': 'Chevrolet', 'model': 'Silverado', 'trim': 'High Country'}
+                                            # }
 
-#difference()
-#Returns a new set containing the difference between 2 or more sets
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
+#Separate dictionaries can be nested as children into a parent dictionary
+truck1 = {
+    "brand": "Ford",
+    "model": "F-150",
+    "trim": "Raptor"
+}
 
-newSet = ubuntuSet.difference(debianSet)    
-print(newSet)                               #{'Xubuntu', 'Ubuntu Kylin', 'Pop!_os', 'KDE Neon', 'Ubuntu Mate', 'elementaryOS', 'Kubuntu', 'Lubuntu', 'Zorin', 'Ubuntu Studio', 'Ubuntu Budgie'}
+truck2 = {
+    "brand": "Toyota",
+    "model": "Tundra",
+    "trim": "TRD Pro"
+}
 
-#difference_update()
-#Removes the items in this set that aer also included in another specified set
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
+truck3 = {
+    "brand": "Chevrolet",
+    "model": "Silverado",
+    "trim": "High Country"
+}
 
-debianSet.difference_update(ubuntuSet)
-print(debianSet)                            #{'Debian', 'Deepin', 'Raspian', 'PureOS', 'MX Linux', 'Kali Linux', 'Linux Mint'}
+alltrucks = {
+    "truck1": truck1,
+    "truck2": truck2,
+    "truck3": truck3,
+}
 
-#intersection()
-#Returns a new set that is the intersection of 2 other sets
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
+print(alltrucks)                            #{
+                                            # 'truck1': {'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor'}, 
+                                            # 'truck2': {'brand': 'Toyota', 'model': 'Tundra', 'trim': 'TRD Pro'}, 
+                                            # 'truck3': {'brand': 'Chevrolet', 'model': 'Silverado', 'trim': 'High Country'}
+                                            # }
 
-newSet = ubuntuSet.intersection(debianSet)
-print(newSet)                               #{Ubuntu}
-
-#intersection_update()
-#Removes the items iin this set that are not present in other specified sets
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
-
-debianSet.intersection_update(ubuntuSet)
-print(debianSet)                            #{Ubuntu}
-
-#isdisjoint()
-#Returns whether two sets have an intersection or not
-#  - Return True if no items in first set is present in second set.
-#  - Returns False if atleast one item from first set is present in second set
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
-
-isDisjoint = ubuntuSet.isdisjoint(debianSet)
-print(isDisjoint)                           #False
-
-#issubset
-#Returns whether one set contains the entirety of this set
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
-
-isSubset = ubuntuSet.issubset(debianSet)
-print(isSubset)                             #False
-
-#issuperset
-#Returns whether this set contains the entirety of another set
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
-
-isSuperset = ubuntuSet.issuperset(debianSet)
-print(isSuperset)                            #False
-
-#symmetric_difference()
-#Return a set that contains all items from both sets, except items that are present in both set (everything except the matching items)
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
-
-newSet = ubuntuSet.symmetric_difference(debianSet)
-print(newSet)                                #{'Ubuntu Kylin', 'Pop!_os', 'Linux Mint', 'Lubuntu', 'PureOS', 'Deepin', 'Xubuntu', 'Debian', 'Kubuntu', 'Zorin', 'Raspian', 'Ubuntu Mate', 'KDE Neon', 'Kali Linux', 'Ubuntu Budgie', 'elementaryOS', 'Ubuntu Studio', 'MX Linux'}
-
-#symmetric_difference_update()
-#Remove the items that are present in both sets, AND insert the items that are not present in both sets.
-ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
-debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
-
-ubuntuSet.symmetric_difference_update(debianSet)
-print(ubuntuSet)                            #{'Kali Linux', 'Debian', 'KDE Neon', 'PureOS', 'Raspian', 'Ubuntu Studio', 'Ubuntu Kylin', 'MX Linux', 'Pop!_os', 'Ubuntu Mate', 'Xubuntu', 'elementaryOS', 'Linux Mint', 'Zorin', 'Deepin', 'Lubuntu', 'Ubuntu Budgie', 'Kubuntu'}  
-
-#The set() Constructor
-
-#It is also possible to use the set() constructor to make a new set
-thisset = set(("apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"))
-print(thisset)                              #{'apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange'}
-"""
+#The dict() Constructor
+#It is also possibel to use the dict() constructor to make a new dictionary.
+thisdict = dict(brand="Ford", model="F-150", trim="Raptor")
+print(thisdict)                             #{'brand': 'Ford', 'model': 'F-150', 'trim': 'Raptor'}
