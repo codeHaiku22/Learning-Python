@@ -75,7 +75,7 @@ f.close()
 
 #write()
 f = open("demofile2.txt", "a")
-f.write("Now this file has more content!")
+f.write("Now this file has more content!\n")
 f.close()
 
 #Open and read the file after appending
@@ -94,6 +94,7 @@ f.close()
 f = open("demofile2.txt", "r")
 print(f.read())                                 #All existing content has been overwritten.
 f.close()
+
 #Create a New File
 f = open("newfile1.txt", "x")
 f.close()
