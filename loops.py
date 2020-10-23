@@ -47,7 +47,7 @@ while i < 6:
     print(i)                                    #1
     i += 1                                      #2
 else:                                           #3
-    print("i is no longer less than 6.")         #4
+    print("i is no longer less than 6.")        #4
                                                 #5
                                                 #i is no longer less than 6.
 
@@ -141,4 +141,3 @@ for x in adj:
 #for loops cannot be empty, but if you for some reason hav ea for loop with no content, ut in the pass statement to avoid getting an error.
 for x in [0, 1, 2]:
     pass
-
