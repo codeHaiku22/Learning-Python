@@ -101,3 +101,27 @@ f.close()
 
 f = open("newfile2.txt", "w")
 f.close()
+
+#Delete Files
+
+import os
+os.remove("newfile1.txt")
+
+#To avoid getting an error, check for existence.
+import os
+
+if os.path.exists("newfile2.txt"):
+    os.remove("newfile2.txt")
+else:
+    print("The file does not exist.")
+
+#Create a Folder
+import os
+
+os.mkdir("testFolder")
+
+#Delete a Folder
+import os
+
+os.rmdir("testFolder")
+
