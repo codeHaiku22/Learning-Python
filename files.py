@@ -75,7 +75,7 @@ f.close()
 
 #write()
 f = open("demofile2.txt", "a")
-f.write("Now this file has more content!\n")
+f.write("\nNow this file has more content!\n")
 f.close()
 
 #Open and read the file after appending
