@@ -12,7 +12,7 @@
 $ pip --version
 """
 
-#If pip ins not in the PATH:
+#If pip is not in the PATH:
 """
 $ python3 -m pip --version
 """
