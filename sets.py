@@ -110,7 +110,7 @@ del thisset
 #copy()
 thisset = {"apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"}
 newset = thisset.copy()
-print(newset)                             #{'apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange'}
+print(newset)                               #{'apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange'}
 
 #Joining Two Sets
 
@@ -190,7 +190,7 @@ ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mat
 debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
 
 isSuperset = ubuntuSet.issuperset(debianSet)
-print(isSuperset)                            #False
+print(isSuperset)                           #False
 
 #symmetric_difference()
 #Return a set that contains all items from both sets, except items that are present in both set (everything except the matching items)
@@ -198,7 +198,7 @@ ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mat
 debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
 
 newSet = ubuntuSet.symmetric_difference(debianSet)
-print(newSet)                                #{'Ubuntu Kylin', 'Pop!_os', 'Linux Mint', 'Lubuntu', 'PureOS', 'Deepin', 'Xubuntu', 'Debian', 'Kubuntu', 'Zorin', 'Raspian', 'Ubuntu Mate', 'KDE Neon', 'Kali Linux', 'Ubuntu Budgie', 'elementaryOS', 'Ubuntu Studio', 'MX Linux'}
+print(newSet)                               #{'Ubuntu Kylin', 'Pop!_os', 'Linux Mint', 'Lubuntu', 'PureOS', 'Deepin', 'Xubuntu', 'Debian', 'Kubuntu', 'Zorin', 'Raspian', 'Ubuntu Mate', 'KDE Neon', 'Kali Linux', 'Ubuntu Budgie', 'elementaryOS', 'Ubuntu Studio', 'MX Linux'}
 
 #symmetric_difference_update()
 #Remove the items that are present in both sets, AND insert the items that are not present in both sets.
