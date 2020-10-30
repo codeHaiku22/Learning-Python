@@ -201,47 +201,49 @@ $ rm -rf project1_env
 When creating an environment, the version of Python can be specified.  This version must exist and must be installed on the system.
 
 ```bash
-$ python3 -m virtualenv -p /usr/bin/python3.8 py38_env
+$ python3 -m virtualenv -p /usr/bin/python2.7 py27_env
 
-created virtual environment CPython3.8.5.final.0-64 in 2115ms
-  creator CPython3Posix(dest=/mnt/c/python_environments/py38_env, clear=False, global=False)
+created virtual environment CPython2.7.18.final.0-64 in 3759ms
+  creator CPython2Posix(dest=/mnt/c/Users/dgrewal/Documents/Projects/Development/python/venv/py27_env, clear=False, global=False)
   seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/dgrewal/.local/share/virtualenv)
-    added seed packages: pip==20.2.4, setuptools==50.3.2, wheel==0.35.1
-  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+    added seed packages: pip==20.2.4, setuptools==44.1.1, wheel==0.35.1
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator
 ```
 
 ### Activate Python Environment
-To activate this environment use the `source` command and call the `py38_env/bin/activate` command.
+To activate this environment use the `source` command and call the `py27_env/bin/activate` command.
 
 *__Note:__ Once activated, the project directory name will prefix the prompt to indicate the currently active environment/project.*
 
 ```bash
-$ source py38_env/bin/activate
+$ source py27_env/bin/activate
 
-(py38_env)$
+(py27_env)$
 ```
 
 To confirm, we can determine the version of python within this environment along with the `which` commands for `python` and `pip`
 
 ```bash
-(py38_env)$ python --version
+(py27_env)$ python --version
 
-Python 3.8.5
+Python 2.17.18
 
-(py38_env)$ which python
+(py27_env)$ which python
 
-/mnt/c/python_environments/py38_env/bin/python
+/mnt/c/python_environments/py27_env/bin/python
 
-(py38_env)$ which python
+(py27_env)$ which pip
 
-/mnt/c/python_environments/py38_env/bin/pip
+/mnt/c/python_environments/py27_env/bin/pip
 ```
 
 ## Install Packages into Environment using Manifest File
 Now, we can install packages into this environment using the "requirements.txt" manifest file created earlier.
 
+*__Note:__ Normally, there will be errors and deprecation messages when performing this task especially when an operation such as this is being performed where requirements from a higher/newer version of Python are being brought into an lower/older version of Python.*
+
 ```bash
-(py38_env)$ pip install -r requirements.txt
+(py27_env)$ pip install -r requirements.txt
 
 Processing /home/dgrewal/.cache/pip/wheels/20/1a/a6/5651fe658d5ffd7fcf610723557f7b20a52a71d7e8e1849cb6/camelcase-0.2-py3-none-any.whl
 Collecting numpy==1.19.3
@@ -255,7 +257,7 @@ Successfully installed camelcase-0.2 numpy-1.19.3 pytz-2020.1
 This new environment contains the minimum set of packages.
 
 ```bash
-(py38_env)$ pip list
+(py27_env)$ pip list
 
 Package    Version
 ---------- -------
@@ -271,7 +273,7 @@ wheel      0.35.1
 To exit from and deactivate an environment, the `deactivate` command is used.
 
 ```bash
-(py38_env)$ deactivate
+(py27_env)$ deactivate
 ```
 
 To confirm deactiviation, check the location f python.
