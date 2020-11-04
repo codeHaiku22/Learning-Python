@@ -21,13 +21,13 @@ os.system("echo Hello from Python!")                                    #Hello f
 # - An exit code of 0 means that no error were encountered.
 import os
 
-home_dir = os.system("cd ~")
+exit_code = os.system("cd ~")
 
-print("`cd ~` ran with exit code %d" % home_dir)                        #`cd ~` ran with exit code 0
+print("`cd ~` ran with exit code %d" % exit_code)                        #`cd ~` ran with exit code 0
 
-unknown_dir = os.system("cd doesnotexist")
+exit_code = os.system("cd doesnotexist")
 
-print("`cd doesnotexist` ran with exit code", unknown_dir)              #`cd doesnotexist` ran with exit code 512
+print("`cd doesnotexist` ran with exit code", exit_code)              #`cd doesnotexist` ran with exit code 512
 
 #[METHOD #2] 
 #-----------
