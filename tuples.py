@@ -116,5 +116,28 @@ print(mytuple)                              #('apple', 'banana', 'cherry', 'kiwi
 
 #The tuple() Constructor
 #It is also possible to use the tuple() constructor to make a new tuple
-thistuple = tuple(("apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"))
-print(thistuple)                            #['apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange']
+thistuple = tuple(["apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"])
+print(thistuple)                            #('apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange')
+
+#Unpacking a Tuple
+
+#Unpacking into Separate Variables
+#A tuple's elements can each be unpacked into separate variables.
+#The number of variables must match the number of elements in the tuple.
+mytuple = ("Max", 28, "Boston")
+
+name, age, city = mytuple
+
+print(name)                                 #Max
+print(age)                                  #28        
+print(city)                                 #Boston
+
+#Unpacking to a list
+mytuple = (0, 1, 2, 3, 4, 5)
+
+i1, *i2, i3, i4 = mytuple
+
+print(i1)                                   #0
+print(i2)                                   #[1, 2, 3]
+print(i3)                                   #4
+print(i4)                                   #5

@@ -143,7 +143,7 @@ newSet = ubuntuSet.difference(debianSet)
 print(newSet)                               #{'Xubuntu', 'Ubuntu Kylin', 'Pop!_os', 'KDE Neon', 'Ubuntu Mate', 'elementaryOS', 'Kubuntu', 'Lubuntu', 'Zorin', 'Ubuntu Studio', 'Ubuntu Budgie'}
 
 #difference_update()
-#Removes the items in this set that aer also included in another specified set
+#Removes the items in this set that are also included in another specified set
 ubuntuSet = {"Pop!_os", "KDE Neon", "Xubuntu", "Kubuntu", "Lubuntu", "Ubuntu Mate", "Ubuntu Budgie", "Ubuntu Studio", "Ubuntu Kylin", "Zorin", "elementaryOS", "Ubuntu"}
 debianSet = {"Deepin", "Ubuntu", "Debian", "MX Linux", "Kali Linux", "PureOS", "Raspian", "Linux Mint"}
 
@@ -213,3 +213,8 @@ print(ubuntuSet)                            #{'Kali Linux', 'Debian', 'KDE Neon'
 #It is also possible to use the set() constructor to make a new set
 thisset = set(("apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"))
 print(thisset)                              #{'apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange'}
+
+#Frozen Sets
+#A frozen set is one that, after being created, cannot be changed.
+frznSet = frozenset([1, 2, 3 ,4])
+print(frznSet)                            #frozenset({1, 2, 3, 4})

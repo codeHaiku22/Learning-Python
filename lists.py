@@ -174,6 +174,17 @@ thislist = ["apple", "banana", "cherry", "kiwi", "mango", "nectarine", "orange"]
 newlist = list(thislist)
 print(newlist)                             #['apple', 'banana', 'cherry', 'kiwi', 'mango', 'nectarine', 'orange']
 
+#Generate a List
+
+thislist = ["apple"] * 5
+print(thislist)                            #['apple', 'apple', 'apple', 'apple', 'apple']
+
+integers = [1, 2, 3, 4, 5, 6, 7, 8, 9]     #[1, 2, 3, 4, 5, 6, 7, 8, 9]  
+squared = [i*i for i in integers]          #[1, 4, 9, 16, 25, 36, 49, 64, 81] 
+
+print(integers)
+print(squared)
+
 #Join Two Lists
 
 #Using +

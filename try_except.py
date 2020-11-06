@@ -48,7 +48,7 @@ finally:
     f.close()    
 
 #Raise an Exception
-#As a Pythong developer, you can choose to throw an exception if a condition occurs.
+#As a Python developer, you can choose to throw an exception if a condition occurs.
 #To throw/raise an exception, use the raise keyword.
 x = -1
 
@@ -56,7 +56,24 @@ if x < 0:
    #raise Exception("Sorry, no numbers below zero.")    #Exception: Sorry, no numbers below zero.
 
 #You can define what kind of error to raise and the text to print to the user.
-x = "hello"
+    x = "hello"
 
 if not type(x) is int:
-   #raise TypeError("Only intergers are allowed.")      #TypeError: Only intergers are allowed.
+   #raise TypeError("Only intergers are allowed.")      #TypeError: Only integers are allowed.
+    pass
+
+#Identify an Exception
+#The sys.exec_info() function returns the details of the exception.  
+# - This allows us to identify the error and refer to it by name in the except clause.
+import sys
+
+try:
+    f = open('/home/andrew_mallet/file11')
+except:
+    print(sys.exc_info())                               #Full error: (<class 'FileNotFoundError'>, FileNotFoundError(2, 'No such file or directory'), <traceback object at 0x7f54b772e900>)
+    print(sys.exc_info() [0])                           #Error Name: <class 'FileNotFoundError'>
+
+try:
+    f = open('/home/andrew_mallet/file11')    
+except FileNotFoundError:
+    print("Sorr, this file could not be found.")    

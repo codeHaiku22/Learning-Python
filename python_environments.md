@@ -291,7 +291,7 @@ To exit from and deactivate an environment, the `deactivate` command is used.
 (py27_env)$ deactivate
 ```
 
-To confirm deactiviation, check the location f python.
+To confirm deactiviation, check the location of python.
 
 ```bash
 $ which python3

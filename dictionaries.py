@@ -42,7 +42,7 @@ k = ('key1', 'key2', 'key3')
 v = 0
 
 anotherdict = dict.fromkeys(k, v)
-print(anotherdict)
+print(anotherdict)                          #{'key1': 0, 'key2': 0, 'key3': 0}
 
 #Accessing Items
 
