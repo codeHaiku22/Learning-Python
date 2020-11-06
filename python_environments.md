@@ -15,6 +15,14 @@ $ ls -l python*
 python2.7  python3  python3-config  python3.8  python3.8-config
 ```
 
+## Python-is-Python3
+Creates a symlink: /usr/bin/python to python3 
+This makes it so you don't have to type `python3` to run python commands and can simply type `python` instead.
+
+```bash
+$ sudo apt install python-is-python3
+```
+
 ## pip - pip Installs Packages
 
 If it doesn't already exist, install `pip` (pip installs pakages).
@@ -201,6 +209,13 @@ $ rm -rf project1_env
 When creating an environment, the version of Python can be specified.  This version must exist and must be installed on the system.
 
 ```bash
+$ python3 -m virtualenv py27env
+
+created virtual environment CPython3.8.5.final.0-64 in 1112ms
+  creator CPython3Posix(dest=/mnt/c/Users/dgrewal/Documents/Projects/Development/python/venv/py27_env, clear=False, global=False)
+  seeder FromAppData(download=False, appdirs=latest, CacheControl=latest, certifi=latest, chardet=latest, colorama=latest, contextlib2=latest, distlib=latest, distro=latest, html5lib=latest, idna=latest, ipaddr=latest, lockfile=latest, msgpack=latest, packaging=latest, pep517=latest, pip=latest, pkg_resources=latest, progress=latest, pyparsing=latest, pytoml=latest, requests=latest, retrying=latest, setuptools=latest, six=latest, urllib3=latest, webencodings=latest, wheel=latest, via=copy, app_data_dir=/home/dgrewal/.local/share/virtualenv/seed-app-data/v1.0.1.debian)
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+
 $ python3 -m virtualenv -p /usr/bin/python2.7 py27_env
 
 created virtual environment CPython2.7.18.final.0-64 in 3759ms
@@ -226,7 +241,7 @@ To confirm, we can determine the version of python within this environment along
 ```bash
 (py27_env)$ python --version
 
-Python 2.17.18
+Python 2.7.18
 
 (py27_env)$ which python
 
