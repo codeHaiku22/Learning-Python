@@ -91,6 +91,7 @@ tri_recursion(6)                                                                
                                                                                     #21
 
 #Lambda
+
 #A lambda function is a small, anonymous function.
 # lamba <arguments> : <expression>
 x = lambda a: a + 10
@@ -116,3 +117,90 @@ print(mydoubler(11))                                                            
 
 mytripler = myfunc(3)
 print(mytripler(11))                                                                #33
+
+#Use a lambda function within a definition
+#Without lambda, sort by x-coordinate
+points = [(1, 2), (15, 1), (5, -1), (10, 4)]
+points_sorted = sorted(points)       
+
+print(points)                                                                       #[(1, 2), (15, 1), (5, -1), (10, 4)]
+print(points_sorted)                                                                #[(1, 2), (5, -1), (10, 4), (15, 1)]
+
+#Without lambda, sort by y-coordinate
+points = [(1, 2), (15, 1), (5, -1), (10, 4)]
+
+def sort_by_y(x):
+    return x[1]
+
+points_sorted = sorted(points, key=sort_by_y)
+
+print(points)                                                                       #[(1, 2), (15, 1), (5, -1), (10, 4)]
+print(points_sorted)                                                                #[(5, -1), (15, 1), (1, 2), (10, 4)]
+
+#With lambda, sort by y-coordinate
+points = [(1, 2), (15, 1), (5, -1), (10, 4)]
+points_sorted = sorted(points, key=lambda x: x[1])
+
+print(points)                                                                       #[(1, 2), (15, 1), (5, -1), (10, 4)]
+print(points_sorted)                                                                #[(5, -1), (15, 1), (1, 2), (10, 4)]
+
+#Using the map function with a lambda function
+#Without lambda - using list comprehension
+a = [1, 2, 3, 4, 5]
+b = [x*2 for x in a]
+print(b)                                                                            #[2, 4, 6, 8, 10]
+
+#With lambda
+a = [1, 2, 3, 4, 5]
+b = map(lambda x: x*2, a)                               
+print(b)                                                                            #<map object at 0x7f668adced90>
+print(list(b))                                                                      #[2, 4, 6, 8, 10]   
+
+#Without lambda - using list comprehension
+a = [1, 2, 3, 4, 5, 6]
+b = [x for x in a if x%2==0]
+print(b)                                                                            #[2, 4, 6]
+
+#With lambda
+a = [1, 2, 3, 4, 5, 6]
+b = filter(lambda x: x%2==0, a)
+print(list(b))                                                                      #[2, 4, 6]
+
+#Using the reduce function with a lambda function
+#Without lambda using a loop
+a = [1, 2, 3, 4, 5, 6]
+fac = 1
+
+for i in a:
+    fac *= i
+
+print(fac)                                                                          #720
+
+#Without lambda using a function
+a = [1, 2, 3, 4, 5, 6]
+
+def factorial(a):
+    fac = 1
+    for i in a:
+        fac *= i
+    return fac
+
+print(factorial(a))                                                                 #720
+
+#Without lambda
+from functools import reduce
+
+a = [1, 2, 3, 4, 5, 6]
+
+def my_prod(a, b):
+    return a * b
+
+fac = reduce(my_prod, a)
+print(fac)                                                                          #720
+
+#With lambda
+from functools import reduce
+
+a = [1, 2, 3, 4, 5, 6]
+fac = reduce(lambda x,y: x*y, a)
+print(fac)                                                                          #720
