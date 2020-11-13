@@ -40,6 +40,12 @@ print(a[-5:-2])     #orl
 a = "Hello, World!"
 print(len(a))       #13
 
+#Reversing
+somestring = "This string will be reversed."
+somestring = somestring[::-1]
+
+print(somestring)                                                   #.desrever eb lliw gnirts sihT
+
 #String Methods
 """#All string methods return new values; they do not change the original string.
 Method 	        Description
@@ -116,6 +122,15 @@ print(a.replace("H", "J"))      #Jello, World!
 a = "Hello, World!"
 print(a.split(","))             #['Hello', ' World!']
 
+#join()     Joins the elements of an iterable to the end of the string
+mylist = ['android', 'apple', 'blackberry', 'librem', 'pine64']
+
+newstring = ''.join(mylist)     
+print(newstring)                #androidappleblackberrylibrempine64
+
+newstring = ' '.join(mylist)    
+print(newstring)                #android apple blackberry librem pine64
+
 #count()    Counts the number of times a specified value occurs in a string
 a = "Hello, World!"
 print(a.count("l"))             #3
@@ -179,3 +194,45 @@ print(myorder.format(quantity, itemno, price))                      #I want to p
 
 txt = "We are the so-called \"Vikings\" from the North."
 print(txt)                                                          #We are the so-called "Vikings" from the North.
+
+#%
+var = "Bill"
+mystring = "The variable is: %s" % var       
+print(mystring)                                                     #The variable is: Bill
+
+var = 3
+mystring = "The variable is: %d" % var
+print(mystring)                                                     #The varaible is: 3
+
+var = 3.141592653589793
+mystring = "The variable is: %f" % var                              #The variable is: 3.141593
+print(mystring)
+
+var = 3.141592653589793
+mystring = "The variable is: %.3f" % var                            #The variable is: 3.142
+print(mystring)
+
+#.format()
+var = 3.141592653589793
+mystring = "The variable is: {}".format(var)
+print(mystring)                                                     #The variable is: 3.141592653589793
+
+var = 3.141592653589793
+mystring = "The variable is: {:.3f}".format(var)
+print(mystring)                                                     #The variable is: 3.142
+
+var1 = 3.141592653589793
+var2 = 5
+mystring = "The variables are: {:.3f} and {}".format(var1, var2)
+print(mystring)                                                     #The variables are: 3.142 and 5
+
+#f-strings
+var1 = 3.141592653589793
+var2 = 5
+mystring = f"The variables are: {var1} and {var2}"
+print(mystring)                                                     #The variables are: 3.141592653589793 and 5
+
+var1 = 3.141592653589793
+var2 = 5
+mystring = f"The variables are: {var1} and {var2*3}"
+print(mystring)                                                     #The variables are: 3.141592653589793 and 15
