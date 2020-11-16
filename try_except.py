@@ -62,7 +62,42 @@ if not type(x) is int:
    #raise TypeError("Only intergers are allowed.")      #TypeError: Only integers are allowed.
     pass
 
+#The assert Statement
+#The assertion is a sanity-check that can be turgned off when testing is complete.
+#It can be thought of an a raise-if-not statement; whereas when the result is false, the exception is raised.
+#Assertions are often made at: 
+# - the beginning of a function to check for valid input
+# - after a function call to check for valid output
+def KelvintoFahrenheit(temperature):
+    assert (temperature >= 0), "Colder than absolute zero - 0K!"
+    return ((temperature - 273) * 1.8) + 32
+
+print(KelvintoFahrenheit(273))                          #32.0
+print(int(KelvintoFahrenheit(505.78)))                  #451
+#print(KelvintoFahrenheit(-5))                          #AssertionError: Colder than absolute zero - 0K!
+
+
 #Identify an Exception
+
+#METHOD #1: Using the Exception keyword and the exception by name
+try:
+    a = 5 / 0
+except Exception as e:
+    print(e)                                            #division by zero
+
+try:
+    a = 5 / 1
+    b = a + '10'
+except ZeroDivisionError as e:
+    print(e)
+except TypeError as e:
+    print(e)                                            #unsupported operand type(s) for +: 'float' and 'str'
+else:
+    print("Everything is fine.")
+finally:
+    print("Cleaning up.")                               #Cleaning up.
+
+#METHOD #2" Using the sys.exec_info() function
 #The sys.exec_info() function returns the details of the exception.  
 # - This allows us to identify the error and refer to it by name in the except clause.
 import sys
@@ -76,4 +111,28 @@ except:
 try:
     f = open('/home/andrew_mallet/file11')    
 except FileNotFoundError:
-    print("Sorr, this file could not be found.")    
+    print("Sorry, this file could not be found.")    
+
+#Defining a Custom Exception
+class ValueTooHighError(Exception):
+    pass
+
+class ValueTooLowError(Exception):
+    def __init__(self, message, value):
+        self.message = message
+        self.value = value
+
+def test_value(x):
+    if x > 100:
+        raise ValueTooHighError('value is too high')
+    if x < 5:
+        raise ValueTooLowError('value is too low', x)
+
+#test_value(150)                                        #__main__.ValueTooHighError: value is too high
+
+try:
+    test_value(1)
+except ValueTooHighError as e:
+    print(e)                                            #value is too high
+except ValueTooLowError as e:
+    print(e.message, e.value)                           #value is too low 1
