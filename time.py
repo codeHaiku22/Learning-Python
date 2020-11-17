@@ -9,5 +9,6 @@ stop = time.time()
 
 elapsed = stop - start
 
+print(elapsed)
 print("Total elapsed time:", float(elapsed), "seconds.")
 print("Total elapsed time:", int(elapsed), "seconds.")
