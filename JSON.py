@@ -189,3 +189,33 @@ json.dumps(x, indent=4, sort_keys=True)                         #{
                                                                 #    "name": "John",
                                                                 #    "pets": null
                                                                 #}
+
+#Dump the information into a file
+with open('person.json', 'w') as file:
+  json.dump(x, file)
+
+with open('person.json', 'w') as file:
+  json.dump(x, file, indent=4)
+
+#Load the information from a file
+with open('person.json', 'r') as file:
+  person = json.load(file)
+  print(person)                                                 #{'name': 'John', 'age': 30, 'married': True, 'divorced': False, 'children': ['Ann', 'Billy'], 
+                                                                #'pets': None, 'cars': [{'model': 'BMW 230', 'mpg': 27.5}, {'model': 'Ford Edge', 'mpg': 24.1}]}
+
+#Using a class
+class User:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+user = User('Max', 27)
+
+def encode_user(obj):
+  if isinstance(obj, User):
+      return {'name': obj.name, 'age':obj.age, obj.__class__.__name__: True}
+  else:
+    raise TypeError
+
+userJSON = json.dumps(user, default=encode_user)
+print(userJSON)                                                 #{"name": "Max", "age": 27, "User": true}
