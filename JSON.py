@@ -152,7 +152,7 @@ print(json.dumps(x, indent=4, separators=(". ", " = ")))        #{
                                                                 #}
 
 #Order the Result
-#The json.dumps() method has parameters to order he keys in the result.
+#The json.dumps() method has parameters to order the keys in the result.
 import json
 
 x = {
@@ -203,13 +203,11 @@ with open('person.json', 'r') as file:
   print(person)                                                 #{'name': 'John', 'age': 30, 'married': True, 'divorced': False, 'children': ['Ann', 'Billy'], 
                                                                 #'pets': None, 'cars': [{'model': 'BMW 230', 'mpg': 27.5}, {'model': 'Ford Edge', 'mpg': 24.1}]}
 
-#Using a class
+#Using a class and function to create JSON
 class User:
   def __init__(self, name, age):
     self.name = name
     self.age = age
-
-user = User('Max', 27)
 
 def encode_user(obj):
   if isinstance(obj, User):
@@ -217,5 +215,45 @@ def encode_user(obj):
   else:
     raise TypeError
 
+user = User('Max', 27)
+
 userJSON = json.dumps(user, default=encode_user)
 print(userJSON)                                                 #{"name": "Max", "age": 27, "User": true}
+
+#Using JSONEncoder from json
+from json import JSONEncoder
+
+class User:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+#Encode
+class UserEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, User):
+            return{'name': obj.name, 'age':obj.age, obj.__class__.__name__: True}
+        return JSONEncoder.default(self, obj)
+
+user = User('Max', 27)    
+
+userJSON = json.dumps(user, cls=UserEncoder)
+print(userJSON)                                                 #{"name": "Max", "age": 27, "User": true}       
+
+userJSON = UserEncoder().encode(user)                           
+print(userJSON)                                                 #{"name": "Max", "age": 27, "User": true}     
+
+#Decode
+user = json.loads(userJSON)
+print(type(user))                                               #<class 'dict'>
+print(user)                                                     #{'name': 'Max', 'age': 27, 'User': True}   <--Notice the single-quotes
+
+def decode_user(dct):
+    if User.__name__ in dct:
+        return User(name=dct['name'], age=dct['age'])
+    return dct
+
+user = json.loads(userJSON, object_hook=decode_user)
+print(type(user))                                               #<class '__main__.User'>
+print(user.name)                                                #Max
+print(user.age)                                                 #27
