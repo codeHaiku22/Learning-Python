@@ -288,3 +288,39 @@ say_hello('Alex')                               #Calling say_hello('Alex')
                                                 #Hello, Alex!
                                                 #End
                                                 #'say_hello' returned 'Hello, Alex!'
+
+#Class Decorators
+
+#Create a class decorator and perform a test to ensure that it works.
+class CountCalls:
+    def __init__(self, func):
+        self.func = func
+        self.num_calls = 0
+    def __call__(self, *args, **kwargs):
+        print('Hi there')
+
+cc = CountCalls(None)
+cc()                                            #Hi there
+
+@CountCalls
+def say_hello():
+    print('Hello!')
+
+#Now let's implement the actual class decorator and demonstrate the cumulative/incrementing behavior.
+class CountCalls:
+    def __init__(self, func):
+        self.func = func
+        self.num_calls = 0
+    def __call__(self, *args, **kwargs):
+        self.num_calls += 1
+        print(f'This is executed {self.num_calls} times.')
+        return self.func(*args, **kwargs)
+
+@CountCalls
+def say_hello():
+    print('Hello!')    
+
+say_hello()                                     #This is executed 1 times.
+                                                #Hello
+say_hello()                                     #This is executed 2 times.
+                                                #Hello                                                
