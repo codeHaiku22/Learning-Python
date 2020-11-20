@@ -104,7 +104,7 @@ def mygenerator():
     yield 3
 
 g = mygenerator()
-print(g)                                        #<generator object mygenerator at 0x7fda130acac0>
+print(g)                                                    #<generator object mygenerator at 0x7fda130acac0>
 
 for i in g:
     print(i)                                                #1
