@@ -229,7 +229,7 @@ Note: The .basicConfig() function can only be called once.  Therefore, each code
 #     handlers: [console]
 #---------------------------------------------------------------------------------------------------#
 
-#To load the block8.conf file, the fileConfig() method must be used.
+#To load the block9.yaml file, the dictConfig() method must be used.
 import logging.config
 import yaml
 
