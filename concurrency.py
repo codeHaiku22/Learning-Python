@@ -35,6 +35,7 @@
 # - Program spends most if its time doing CPU operations.
 # - Speeding it up involves finding ways to do more computations in the same amount of time.
 
+
 #How to Speed Up an I/O-Bound Program
 #Let's look at a common problem of downloading content over the network by downloading web pages from a few sites.
 
@@ -310,6 +311,7 @@ if __name__ == "__main__":
                                                                                                     #ForkPoolWorker-1:Read 277 from http://olympus.realpython.org/dice
                                                                                                     #ForkPoolWorker-2:Read 277 from http://olympus.realpython.org/dice
                                                                                                     #Downloaded 20 in 0.5544731616973877 seconds.
+
 
 #How to Speed Up a CPU-Bound Program
 #Let's look at a function to create something that takes a long time to run on the CPU.
