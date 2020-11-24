@@ -19,7 +19,7 @@ print(p1.x)                                     #5
 #The __init__() Function
 #The examples above are classes and objects in their simplest form and are not really useful in real-life applications.
 """
-To understand the meaning of classes, we hav to understand the built-in __init__() function.
+To understand the meaning of classes, we have to understand the built-in __init__() function.
 All classes have a function called __init__() which is always executed whenthe class is being initiated.
 Use the __init__() function to assign values to object properties, or other operations that are necessary to do when the object is being created.
 The __init__() function is called automatically every time the class is being used to create a new object.
@@ -172,3 +172,43 @@ class Student(Person):
 
 x = Student("Mike", "Olsen", 2020)        
 x.welcome()                                     #Welcome, Mike Olsen to the class of 2020
+
+#Bult in Class Attributes
+"""
+Every Python class keeps the following built-in attributes.  
+These attributes can be accessed using dor-operator notation like any other attribute.
+__dict__    Dictionary containing the class's namespace
+__doc__     Class documentation string or none (if undefined)
+__name__    Class name
+__module__  Module name in which the class is defined (also known as "__main__" in interactive mode)
+__bases__   A possibly empty tuple containing the base classes, in the order of their occurrence in the base class list.
+"""
+class Employee:
+
+    empCount = 0
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        Employee.empCount += 1
+
+    def displayCount(self):
+        print("Total Employees: %d" % Employee.empCount)
+    
+    def displayEmployee(self):
+        print(f"Name: {self.name} | Salary: {self.salary}")
+
+print("Employee.__doc__:", Employee.__doc__)                #Employee.__doc__: None
+print("Employee.__name__:", Employee.__name__)              #Employee.__name__: Employee
+print("Employee.__module__:", Employee.__module__)          #Employee.__module__: __main__
+print("Employee.__bases__:", Employee.__bases__)            #Employee.__bases__: (<class 'object'>,)
+print("Employee.__dict__:", Employee.__dict__)              #Employee.__dict__: {'__module__': '__main__', 
+                                                            #                    'empCount': 0, 
+                                                            #                    '__init__': <function Employee.__init__ at 0x7f2e8fe648b0>, 
+                                                            #                    'displayCount': <function Employee.displayCount at 0x7f2e8fe64940>, 
+                                                            #                    'displayEmployee': <function Employee.displayEmployee at 0x7f2e8fe649d0>, 
+                                                            #                    '__dict__': <attribute '__dict__' of 'Employee' objects>, 
+                                                            #                    '__weakref__': <attribute '__weakref__' of 'Employee' objects>, 
+                                                            #                    '__doc__': None}
+
+
