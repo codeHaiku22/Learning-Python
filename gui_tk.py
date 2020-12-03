@@ -78,7 +78,7 @@ print(userInput)
 #Tkinter Event Loop
 #The code below tells Python to run the Tkinter event loop.
 # - This method listens for events (button clicks, key presses) and blocks any code that comes after it from running until the window is closed.
-window.mainloop()
+'window.mainloop()
 
 print(userInput)
 print("Really")

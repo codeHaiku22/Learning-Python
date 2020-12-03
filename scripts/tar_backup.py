@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import datetime, os, subprocess, sys
 
 exitCode = os.system('sh /home/dgrewal/bin/tar/mount_repo.sh')                                      #using os.system for shelling
@@ -10,7 +9,7 @@ if exitCode != 0:
 
 today = datetime.datetime.now()
 directory = '/mnt/u/backups/tar'
-archiveFile = str(today.year) + str(today.month) + str(today.day) + ".tar.gz"
+archiveFile = (today.strftime("%Y%m%d")) + ".tar.gz"
 path = directory + os.sep + archiveFile
 
 make_tar = subprocess.run(["tar", "-cvzf", path, "-X", "excludes.txt", '/mnt/c/Users/dgrewal/'])    #using subprocess.run for shelling
@@ -37,4 +36,4 @@ if deleteYN == 'y' or deleteYN == 'yes':
     else:
         print("That file does not exist.")
     subprocess.run(["echo", "\n", "[ List of archive files in", directory, ": ]"])
-    list_files = subprocess.run(["ls", "-lh", directory])    
+    list_files = subprocess.run(["ls", "-lh", directory])
