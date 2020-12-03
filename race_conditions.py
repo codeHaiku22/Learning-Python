@@ -27,6 +27,7 @@ def increment_counter(fake_value):
 
 if __name__ == "__main__":
     fake_data = [x for x in range(5000)]
+    print(fake_data)
     counter = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=5000) as executor:
         executor.map(increment_counter, fake_data)
