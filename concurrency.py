@@ -399,7 +399,7 @@ def square_numbers():
 threads = []
 num_threads = 10
 
-#create processes
+#create threads
 for i in range(num_threads):
     t = threading.Thread(target=square_numbers)
     threads.append(t)
