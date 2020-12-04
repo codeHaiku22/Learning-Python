@@ -383,3 +383,61 @@ if __name__ == "__main__":
 #For I/O-bound problems, there a general rule of thumb in the Python community: "Use asyncio when you can, threading when you must."
 # - asyncio can provide the best speed up for this type of program, but it requires critical libraries be imported to take advantage of asyncio.
 # - Any task that doesn't give up control to the event loop will block all of the other tasks.
+
+#Syntactical Similarity Between Threading and MultiProcessing 
+
+#Threading
+import threading
+import os
+import time
+
+def square_numbers():
+    for i in range(100):
+        i * i
+        time.sleep(0.1)
+
+threads = []
+num_threads = 10
+
+#create processes
+for i in range(num_threads):
+    t = threading.Thread(target=square_numbers)
+    threads.append(t)
+
+#start
+for t in threads:
+    t.start()
+
+#join
+for t in threads:
+    t.join()
+
+print('End Main - All Threads Completed') 
+
+#MultiProcessing
+import multiprocessing
+import os
+import time
+
+def square_numbers():
+    for i in range(100):
+        i * i
+        time.sleep(0.1)
+
+processes = []
+num_processes = os.cpu_count()
+
+#create processes
+for i in range(num_processes):
+    p = multiprocessing.Process(target=square_numbers)
+    processes.append(p)
+
+#start
+for p in processes:
+    p.start()
+
+#join
+for p in processes:
+    p.join()
+
+print('End Main - All Processes Completed')    

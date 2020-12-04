@@ -136,6 +136,42 @@ print_name()                                    #Start
                                                 #Alex
                                                 #End
 
+#Another example
+from time import time
+
+def timer(func):
+    def f(x, y=10):
+        before = time()
+        retval = func(x, y)
+        after = time()
+        print('Elapsed time:', after - before)
+        return retval
+    return f
+
+@timer
+def addition(x, y=10):
+    return x + y
+
+@timer
+def subtraction(x, y=10):
+    return x - y
+
+sum = addition(5) 
+print(sum)                                      #Elapsed time: 4.0531158447265625e-06
+                                                #15
+
+sum = addition(2, 3)
+print(sum)                                      #Elapsed time: 1.9788742065429688e-05
+                                                #5
+
+difference = subtraction(12)                
+print(difference)                               #Elapsed time: 5.0067901611328125e-06
+                                                #2
+
+difference = subtraction(10, 3)
+print(difference)                               #Elapsed time: 4.5299530029296875e-06
+                                                #7
+
 #Using *args and **kwargs
 
 #If we try to pass an argument to a decorated function without 
