@@ -283,3 +283,174 @@ print(x)                                                                    #[[0
 #Visualization of Uniform Distribution
 sns.distplot(random.uniform(size=1000), hist=False)
 plt.show() 
+
+#---[ Logistic Distribution ]-------------------------------------------------------------------------------------------------------------------------
+
+"""
+A Logistic Distribution is used to describe growth.
+It is used extensively in machine learning in logistic regression, neural networks, etc.
+It has 3 parameters:
+  (1) loc      Where the peak is - mean (default 0).
+  (2) scale    The flatness of distribution - standard deviation (default 1).
+  (3) size     The shape of the returned array.
+"""
+
+from numpy import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Draw 2x3 samples from a logistic distribution with mean at 1 and standard deviation of 2.0.
+x = random.logistic(loc=1, scale=2, size=(2,3))
+print(x)                                                                    #[[1.38295002 1.32856967 6.46333548]
+                                                                            # [0.27819345 3.71383209 3.12953539]]
+#Visualization of Logistic Distribution
+sns.distplot(random.logistic(size=1000), hist=False)
+plt.show()
+
+#Difference Between Logistic Distribution and Normal Distrbution
+# - Both distributions are nearly identical, but a logistic distribution has more area under the tails
+# - The Logistic Distribution represents more possibility of occurrence of events further away from the mean.
+# - For higher value of scale (standard deviation), the Normal and Logistic distributions are near identical apart from the peak.
+sns.distplot(random.normal(scale=2, size=1000), hist=False, label='normal')
+sns.distplot(random.logistic(size=1000), hist=False, label='logistic')
+plt.show()
+
+#---[ Multinomial Distribution ]----------------------------------------------------------------------------------------------------------------------
+
+"""
+Multinomial Distribution is a generalization of a Binomial Distribution.
+It describes outcomes of multi-nomial scenarios, unlike binomial where scenarios must be only 1 of 2 (blood type of population, dice roll outcome).
+It has 3 parameters:
+  (1) n        Number of possible outcomes (6 for a dice roll).
+  (2) pvals    List of probabilities of outcomes (for a dice roll: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6])
+  (3) size     The shape of the returned array.
+"""
+
+from numpy import random
+
+#Draw out a sample for dice roll
+# - Multinomial samples will NOT produce a single value; they will produce 1 value for each pval.
+# - They are a generalization of binomial distribution 
+#    + Their visual representation and similarity of normal distribution is the same as that of multiple Binomial Distributions.
+x = random.multinomial(n=6, pvals=[1/6, 1/6, 1/6, 1/6, 1/6, 1/6])
+print(x)                                                                    #[3 0 0 0 3 0]
+
+#---[ Exponential Distribution ]----------------------------------------------------------------------------------------------------------------------
+
+"""
+Exponential Distribution is used for describing time until next event (failure, success, etc.).
+It has 2 parameters:
+  (1) scale    Inverse of rate - see lam in Poisson Distribution (default 1.0).
+  (2) size     The shape of the returned array.
+"""
+
+from numpy import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Draw out a sample for exponential distribution with 2.0 scale and 23x size.
+x = random.exponential(scale=2, size=(2, 3))
+print(x)                                                                    #[[0.53243082 0.55915908 0.37184984]
+                                                                            # [0.58041191 0.0400673  0.44781221]]
+
+#Visualization of Exponential Distribution
+sns.distplot(random.exponential(size=1000), hist=False)
+plt.show()
+
+#Relation Between Poisson Distribution and Exponential Distribution
+# - Poisson Distribution deals with number of occurrences or an event in a time period.
+# - Exponential Distribution deals with the time between these events.
+
+#---[ Chi Square Distribution ]-----------------------------------------------------------------------------------------------------------------------
+
+"""
+Chi Square Distributionis used as a basis to verify the hypothesis.
+It has 2 parameters:
+  (1) df      Degree of freedom.
+  (2) size    The shape of the returned array.
+"""
+
+from numpy import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Draw out a sample for Chi Squared Distribution with degree of freedom of 2 and size of 2x3.
+x = random.chisquare(df=2, size=(2,3))
+print(x)                                                                    #[[2.85738448 1.28099029 2.89376304]
+                                                                            # [1.22461892 3.12091151 1.40834177]]
+
+#Visualization of Chi Square Distribution
+sns.distplot(random.chisquare(df=1, size=1000), hist=False)
+plt.show()
+
+#---[ Rayleigh Distribution ]-------------------------------------------------------------------------------------------------------------------------
+
+"""
+Rayleigh Distribution is used in signal processing.
+It has 2 parameters:
+  (1) scale    Decides how flat the distribution will be - standard deviation (default 1.0).
+  (2) size     The shape of the returned array.
+"""
+
+from numpy import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Draw out a sample for Rayleigh Distribution with scale of 2 and size of 2x3.
+x = random.rayleigh(scale=2, size=(2,3))
+print(x)                                                                    #[[2.65682876 2.16858634 5.0490129 ]
+                                                                            # [2.22168305 4.05696949 1.25257441]]
+
+#Visualization of Rayleigh Distribution
+sns.distplot(random.rayleigh(size=1000), hist=False)
+plt.show()
+
+#Similarity Between Rayleigh Distribution and Chi Square Distribution
+# - At unit standard deviation the and 2 degrees of freedom, rayleigh and chi square represent the same distributions.
+
+#---[ Pareto Distribution ]---------------------------------------------------------------------------------------------------------------------------
+
+"""
+The Pareto Distribution follows Pareto's law (80-20 distribution where 20% of the factors cause 80% of the outcome).
+It has 2 parameters:
+  (1) a       Shape parameter
+  (2) size    The shape of the returned array.
+"""
+
+from numpy import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Draw out a sample for Pareto Distribution with shape of 2 and size 2x3
+x = random.pareto(a=2, size=(2,3))
+print(x)                                                                    #[[0.13448729 0.74773998 0.21334766]
+                                                                            # [0.04154645 0.01357176 1.41335777]
+
+#Visualization of Pareto Distribution
+sns.distplot(random.pareto(a=2, size=1000), kde=False)
+plt.show() 
+
+#---[ Zipf Distribution ]-----------------------------------------------------------------------------------------------------------------------------
+
+"""
+Zipf Distributions are used to sample data based on Zipf's Law.
+Zipf's Law: In a collection, the nth common term is 1/n times of the most common term (5th common word in English occurs nearly 1/5th times as of the most).
+It has 2 parameters:
+  (1) a       Distribution parameter
+  (2) size    The shape of the returned array. 
+"""
+
+from numpy import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Draw out a sample for Zipf Distribution with distribution parameter of 2 and size of 2x3.
+x = random.zipf(a=2, size=(2, 3))
+print(x)                                                                    #[[1 2 4]
+                                                                            # [2 1 1]]
+
+#Visualization of Zipf Distribution
+# - Sample 1000 points but plotting only ones with value < 10 for a more meaninhful chart.
+x = random.zipf(a=2, size=1000)
+sns.distplot(x[x<10], kde=False)
+plt.show() 
