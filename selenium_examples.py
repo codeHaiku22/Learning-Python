@@ -44,26 +44,40 @@ find_element_by_tag_name 	          The first element with the given tag name wi
 find_element_by_class_name 	        The first element with the matching class attribute name will be returned.
 find_element_by_css_selector 	      The first element with the matching CSS selector will be returned.
 
+---[ find_element_by_id ]---
+
 <form id="loginForm">
 login_form = driver.find_element_by_id('loginForm')
 
+---[ find_element_by_name ]---
+
 <input name="username" type="text" />
 element = driver.find_element_by_name('username')
+
+---[ find_element_by_xpath ]---
 
 <html> 
  <body> 
   <form id="loginForm"> 
 login_form = driver.find_element_by_xpath("/html/body/form[1]")
 
+---[ find_element_by_partial_link_text ]---
+
 <a href="continue.html">Continue</a>
 login_form = driver.find_element_by_link_text('Continue')
 login_form = driver.find_element_by_partial_link_text('Conti')
 
+---[ find_element_by_class_name ]---
+
 <h1>Welcome</h1>
 login_form = driver.find_element_by_tag_name('h1')
 
+---[ find_element_by_xpath ]---
+
 <p class="content">Site content goes here.</p> 
 content = driver.find_element_by_class_name('content')
+
+---[ find_element_by_css_selector ]---
 
 <p class="content">Site content goes here.</p>
 content = driver.find_element_by_css_selector('p.content')
