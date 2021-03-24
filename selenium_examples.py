@@ -150,6 +150,7 @@ UnexpectedTagNameException 	      Thrown when a support class did not get an exp
 
 #---[ Simple Script ]---------------------------------------------------------------------------------------------------------------------------------
 from selenium import webdriver
+#from selenium.webdriver.common.keys import Keys  #Can be used for element.send_Keys(Keys.HOME | Keys.SPACE | Keys.ENTER | etc.)
 import time
 
 driver = webdriver.Firefox()
