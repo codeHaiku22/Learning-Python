@@ -259,3 +259,46 @@ driver.close()
 
 #close all windows
 driver.quit()
+
+#--[ Intelligent Waiting ]----------------------------------------------------------------------------------------------------------------------------
+
+import time
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as expcond
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+
+ffoptions = webdriver.FirefoxOptions()              #Run Headless - No Visible Window Opens
+ffoptions.headless = True                           #Run Headless - No Visible Window Opens
+
+url = "http:\\\\somewebsite.com\\somepage" 
+user = "username"  
+passwd = "password"
+
+try:
+    driver = webdriver.Firefox(options=ffoptions)   #Run Headless - No Visible Window Opens
+    driver.get(url)
+    userId = driver.find_element_by_id("login-user")
+    userId.send_keys(user)
+    password = driver.find_element_by_id("login-password")
+    password.send_keys(passwd)
+    login = driver.find_element_by_id("login-button")
+    login.click()
+    welcomeMessage = WebDriverWait(driver, 5).until(expcond.presence_of_element_located((By.ID,"welcome-message"))) #Replaces the 2 lines below it
+    #time.sleep(5)
+    #welcomeMessage = driver.find_element_by_id("welcome-message")
+    welcomeMessage.send_keys("Thank you!.")
+    welcomeMessage.send_keys(Keys.ENTER)
+except NoSuchElementException:
+    print("A certain element was not found on the webpage.  Perhaps it has been redesigned?")
+except TimeoutException:
+    print("Page timed out after waiting for login to successfully occur.")    
+except Exception as e:
+    print(e)
+    quit()    
+finally:
+    driver.close()
+    driver.quit() 
