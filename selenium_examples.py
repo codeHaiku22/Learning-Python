@@ -302,3 +302,42 @@ except Exception as e:
 finally:
     driver.close()
     driver.quit() 
+
+
+#--[ Handling Alerts ]--------------------------------------------------------------------------------------------------------------------------------
+
+import time
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as expcond
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.keys import Keys
+
+ffoptions = webdriver.FirefoxOptions()              #Run Headless - No Visible Window Opens
+ffoptions.headless = True                           #Run Headless - No Visible Window Opens
+
+url = "http:\\\\somewebsite.com\\somepage" 
+user = "username"  
+passwd = "password"
+
+try:
+    driver = webdriver.Firefox(options=ffoptions)   #Run Headless - No Visible Window Opens
+    driver.get(url)
+    userId = driver.find_element_by_id("login-user")
+    userId.send_keys(user)
+    password = driver.find_element_by_id("login-password")
+    password.send_keys(passwd)
+    login = driver.find_element_by_id("login-button")
+    login.click()
+    WebDriverWait(driver, 5).until(expcond.alert_is_present())
+    driver.switch_to.alert.accept()
+    driver.switch_to.window
+except TimeoutException: #alert did not appear
+    pass
+except Exception as e:
+    print(e)
+    quit()
+finally:
+    driver.close()
+    driver.quit()    
