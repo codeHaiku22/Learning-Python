@@ -25,7 +25,11 @@ def decryptString(encText, key):
 
 key = generateKey()
 
-print(key.decode('utf-8'))
+#To convert key to string for storage in a file
+strKey = key.decode('utf-8')
+
+#To convert key back ot bytes after retrieval from a file where it was stored
+key = str.encode(strKey, 'utf-8')
 
 encrypted = enrcyptString('Hello World!', key)
 
